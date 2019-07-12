@@ -18,12 +18,12 @@
 using std::cerr;
 using std::endl;
 
-double ceil_441(double f)
+double ceil_round(double f)
 {
     return ceil(f-0.00001);
 }
 
-double floor_441(double f)
+double floor_round(double f)
 {
     return floor(f+0.00001);
 }
@@ -755,7 +755,7 @@ void Triangle::fillTriangle(Screen screen, Camera c)
 {	
 	if (isGoingUp == 1)
 	{
-		rowMin = ceil_441(LB[1]), rowMax = floor_441(P[1]);
+		rowMin = ceil_round(LB[1]), rowMax = floor_round(P[1]);
 		double t;
 		double left_t, right_t;
 		double leftZ, rightZ;
@@ -823,7 +823,7 @@ void Triangle::fillTriangle(Screen screen, Camera c)
 				right_shading = shading[2] + (right_t * (shading[0] - shading[2]));
 			}		
 
-			for (int c = ceil_441(leftEnd); c <= floor_441(rightEnd); c++){
+			for (int c = ceil_round(leftEnd); c <= floor_round(rightEnd); c++){
 				double color_d[3];
 				unsigned char color_uc[3];
 				double currentZ;
@@ -855,9 +855,9 @@ void Triangle::fillTriangle(Screen screen, Camera c)
 				if (color_d[1] > 1.0){ color_d[1] = 1.0;}
 				if (color_d[2] > 1.0){ color_d[2] = 1.0;}
 				
-				color_uc[0] = ceil_441(color_d[0] * 255.0);
-				color_uc[1] = ceil_441(color_d[1] * 255.0);
-				color_uc[2] = ceil_441(color_d[2] * 255.0);
+				color_uc[0] = ceil_round(color_d[0] * 255.0);
+				color_uc[1] = ceil_round(color_d[1] * 255.0);
+				color_uc[2] = ceil_round(color_d[2] * 255.0);
 				
 				if (currentZ > screen.get_depthbuffer(c, r)){
 					screen.set_pixel(c, r, color_uc, id);
@@ -876,7 +876,7 @@ void Triangle::fillTriangle(Screen screen, Camera c)
 		double left_shading, right_shading;
 		double temp_color_t;
 		double temp_shading_t;
-		rowMin = ceil_441(P[yValue]), rowMax = floor_441(LB[yValue]);
+		rowMin = ceil_round(P[yValue]), rowMax = floor_round(LB[yValue]);
 		
 		for (float r = rowMax; r >= rowMin; r--){
 			if (slope1 != 0){
@@ -937,7 +937,7 @@ void Triangle::fillTriangle(Screen screen, Camera c)
 				right_shading = shading[2] + (right_t * (shading[0] - shading[2]));
 			}		
 						
-			for (int c = ceil_441(leftEnd); c <= floor_441(rightEnd); c++){
+			for (int c = ceil_round(leftEnd); c <= floor_round(rightEnd); c++){
 				
 				double color_d[3];
 				unsigned char color_uc[3];
@@ -970,9 +970,9 @@ void Triangle::fillTriangle(Screen screen, Camera c)
 				if (color_d[1] > 1.0){ color_d[1] = 1.0;}
 				if (color_d[2] > 1.0){ color_d[2] = 1.0;}
 				
-				color_uc[0] = ceil_441(color_d[0] * 255.0);
-				color_uc[1] = ceil_441(color_d[1] * 255.0);
-				color_uc[2] = ceil_441(color_d[2] * 255.0);
+				color_uc[0] = ceil_round(color_d[0] * 255.0);
+				color_uc[1] = ceil_round(color_d[1] * 255.0);
+				color_uc[2] = ceil_round(color_d[2] * 255.0);
 
 				if (currentZ > screen.get_depthbuffer(c, r)){
 					screen.set_pixel(c, r, color_uc, id);
